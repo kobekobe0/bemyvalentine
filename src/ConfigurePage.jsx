@@ -62,7 +62,9 @@ function ConfigurePage() {
                 />
 
                 {done ? (
-                    <CopyToClipboard text={`${name}++${otherName}++${email}`}>
+                    <CopyToClipboard
+                        text={`https://bemyvaletine.vercel.app/invite/${name}++${otherName}++${email}`}
+                    >
                         <button
                             style={{
                                 marginTop: '2em',
