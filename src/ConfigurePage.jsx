@@ -23,7 +23,7 @@ function ConfigurePage() {
                 paddingBottom: '5em',
             }}
         >
-            <h1>BeMyValetine hehe</h1>
+            <h1>BeMyValentine hehe</h1>
             <img src={p1} alt="" />
             <div
                 style={{
