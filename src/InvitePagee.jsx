@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import p1 from './img/pic.jpg'
+import p2 from './img/aa.png'
 import emailjs from '@emailjs/browser'
 import './App.css'
 import { useParams } from 'react-router-dom'
@@ -94,7 +95,7 @@ const InvitePagee = () => {
     return (
         <div className="App" id="App">
             <img
-                src={p1}
+                src={yesClicked ? p2 : p1}
                 alt="will you be my valentine?"
                 style={{ maxWidth: '90vw', height: '350px' }}
             />
