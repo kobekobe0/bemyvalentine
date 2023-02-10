@@ -65,7 +65,7 @@ function ConfigurePage() {
 
                 {done ? (
                     <CopyToClipboard
-                        text={`https://bemyvaletine.vercel.app/invite/${name}++${otherName}++${email}`}
+                        text={`https://bemyvaletine.vercel.app/invite/${otherName}++${name}++${email}`}
                     >
                         <button
                             style={{
