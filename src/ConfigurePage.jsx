@@ -25,6 +25,9 @@ function ConfigurePage() {
         >
             <h1>BeMyValentine hehe</h1>
             <img src={p1} alt="" />
+            <p>
+                <strong>NOTE!</strong> only working on gmail addresses
+            </p>
             <div
                 style={{
                     display: 'flex',
@@ -37,7 +40,6 @@ function ConfigurePage() {
                     type="email"
                     placeholder="his/her email"
                     style={{
-                        marginTop: '2em',
                         padding: '1em',
                     }}
                     onChange={(e) => setEmail(e.target.value)}

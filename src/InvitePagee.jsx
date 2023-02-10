@@ -3,6 +3,7 @@ import p1 from './img/pic.jpg'
 import emailjs from '@emailjs/browser'
 import './App.css'
 import { useParams } from 'react-router-dom'
+import JSConfetti from 'js-confetti'
 
 const btnStyle = {
     paddingLeft: '2em',
@@ -17,6 +18,9 @@ const btnStyle = {
 }
 
 const InvitePagee = () => {
+    const jsConfetti = new JSConfetti()
+    const [yesClicked, setYesClicked] = useState(false)
+    const [yesLoading, setYesLoading] = useState(false)
     const [noStyle, setNoStyle] = useState({
         paddingLeft: '2em',
         paddingRight: '2em',
@@ -36,7 +40,8 @@ const InvitePagee = () => {
 
     const clickYes = async () => {
         const paramsArr = params.split('++')
-        const success = await emailjs
+        setYesLoading(true)
+        emailjs
             .send(
                 'service_5y2hgfi',
                 'template_nzikew2',
@@ -48,9 +53,21 @@ const InvitePagee = () => {
                 'NBwXUC49nvfcrkewJ'
             )
             .then((res) => {
+                console.log('success')
+                setYesClicked(true)
+
+                setTimeout(() => {
+                    jsConfetti.addConfetti({
+                        emojis: ['🌈', '⚡️', '💥', '✨', '💫', '🌸'],
+                        emojiSize: 200,
+                        confettiNumber: 100,
+                    })
+                }, 1000)
+
                 alert('Very much thanks! Please, check your email.')
             })
             .catch((err) => {
+                console.log(err)
                 alert('something went wrong')
             })
     }
@@ -75,19 +92,28 @@ const InvitePagee = () => {
         })
     }
     return (
-        <div className="App">
+        <div className="App" id="App">
             <img
                 src={p1}
                 alt="will you be my valentine?"
                 style={{ maxWidth: '90vw', height: '350px' }}
             />
             <div>
-                <button style={btnStyle} onClick={clickYes}>
-                    yes
-                </button>
-                <button style={noStyle} onClick={noClicked}>
-                    no
-                </button>
+                {yesClicked ? null : (
+                    <>
+                        <button
+                            style={btnStyle}
+                            onClick={clickYes}
+                            disabled={yesLoading}
+                        >
+                            {yesLoading ? 'loading...' : 'yes'}
+                        </button>
+
+                        <button style={noStyle} onClick={noClicked}>
+                            no
+                        </button>
+                    </>
+                )}
             </div>
             <configurePage />
         </div>
