@@ -110,7 +110,11 @@ const InvitePagee = () => {
                             {yesLoading ? 'loading...' : 'yes'}
                         </button>
 
-                        <button style={noStyle} onClick={noClicked}>
+                        <button
+                            style={noStyle}
+                            onClick={noClicked}
+                            onMouseEnter={noClicked}
+                        >
                             no
                         </button>
                     </>
